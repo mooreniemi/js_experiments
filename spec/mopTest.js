@@ -2,7 +2,25 @@ require('../boot.js');
 
 var MoP = require('../mop.js');
 
+// http://blog.interfacevision.com/design/design-mop-and-javascript/
+
 describe("some examples of message oriented programming in javascript", function() {
+    describe("basic prototypal inheritances works via #message", function() {
+        var firstObject = MoP.message({
+                foo: function foo() {
+                    return "foo"
+                }
+            }),
+            secondObject = MoP.message({
+                foo: function foo() {
+                    return "foo"
+                }
+            });
+        it("helps objects share common behavior", function() {
+            expect(firstObject.foo()).toBe("foo");
+            expect(secondObject.foo()).toBe("foo");
+        });
+    });
     describe("is composed of a type (behavior) and a value", function() {
         var newMessage = MoP.msg(MoP.Num, {
             val: 4
@@ -28,6 +46,12 @@ describe("some examples of message oriented programming in javascript", function
         });
         it("responds to common #go", function() {
             expect(addMsg.go).toBe(67);
+        });
+        it("responds to #asNum", function() {
+            expect(addMsg.asNum).toBe(67);
+        });
+        it("responds to #asStr", function() {
+            expect(addMsg.asStr).toBe('2344');
         });
     });
 });

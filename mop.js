@@ -32,6 +32,7 @@ var Add = {
   get asStr() { return this.data.left.asStr + this.data.right.asStr; }
 };
 
+// behavior and data
 function msg(behavior, data) {
     var Msg = function() {};
     Msg.prototype = behavior; // shared behavior and data (if any)
@@ -40,7 +41,15 @@ function msg(behavior, data) {
     return msg;
 };
 
+// behavior only via a function object (functor)
+function message(functor) {
+    function Msg() {}
+    Msg.prototype = functor;
+    return new Msg();
+};
+
 module.exports.Message = Message;
 module.exports.Num = Num;
 module.exports.Add = Add;
 module.exports.msg = msg;
+module.exports.message = message;

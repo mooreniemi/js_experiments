@@ -6,25 +6,22 @@ var MoP = require('../mop.js');
 
 describe("some examples of message oriented programming in javascript", function() {
     describe("basic prototypal inheritances works via #message", function() {
-        var firstObject = MoP.message({
+        var functor = {
                 foo: function foo() {
                     return "foo"
                 }
-            }),
-            secondObject = MoP.message({
-                foo: function foo() {
-                    return "foo"
-                }
-            });
+            },
+            firstMessageObject = MoP.message(functor),
+            secondMessageObject = MoP.message(functor);
         it("helps objects share common behavior", function() {
-            expect(firstObject.foo()).toBe("foo");
-            expect(secondObject.foo()).toBe("foo");
+            expect(firstMessageObject.foo()).toBe("foo");
+            expect(secondMessageObject.foo()).toBe("foo");
         });
     });
     describe("is composed of a type (behavior) and a value", function() {
         var newMessage = MoP.msg(MoP.Num, {
             val: 4
-        })
+        });
         it("responds to common #go", function() {
             expect(newMessage.go).toBe(4);
         });

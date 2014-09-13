@@ -1,17 +1,17 @@
-var Message = {
-    get go() {
-        // code goes here
-        // return something;
-    },
-    get asNum() {
-        // code goes here
-        // return numeric;
-    },
-    get asStr() {
-        // code goes here
-        // return string;
-    }
-};
+// var Message = {
+//     get go() {
+//         code goes here
+//         return something;
+//     },
+//     get asNum() {
+//         code goes here
+//         return numeric;
+//     },
+//     get asStr() {
+//         code goes here
+//         return string;
+//     }
+// };
 
 var Num = {
     get go() {
@@ -48,7 +48,7 @@ function message(functor) {
     return new Msg();
 };
 
-module.exports.Message = Message;
+// module.exports.Message = Message;
 module.exports.Num = Num;
 module.exports.Add = Add;
 module.exports.msg = msg;

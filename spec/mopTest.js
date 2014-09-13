@@ -1,8 +1,4 @@
-var reporters = require('jasmine-reporters');
-jasmine.getEnv().addReporter(new reporters.TerminalReporter({
-    verbosity: 3,
-    color: true
-}));
+require('../boot.js');
 
 var MoP = require('../mop.js');
 

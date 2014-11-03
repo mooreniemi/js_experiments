@@ -1,6 +1,7 @@
 // http://jlongster.com/Removing-User-Interface-Complexity,-or-Why-React-is-Awesome
 // https://mollyrocket.com/861
 // https://gist.github.com/jlongster/11192270
+// http://sol.gfxile.net/files/Assembly07_IMGUI.pdf
 
 var jsdom = require("jsdom").jsdom;
 global.document = jsdom("<button id='foo'>hello world</button><div id='bar'>bye now</div>");

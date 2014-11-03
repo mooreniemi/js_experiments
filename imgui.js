@@ -50,8 +50,13 @@ var doButton = function(ui_context,id,text){
   this.init();
 };
 
-function update() {
-
+function update(ui_context, id, options) {
+  // if doButton
+    // true if clicked, false otherwise
+  if (doButton(ui_context, id, options.text)) {
+    // then do the thing we wanted to do
+    
+  }
 };
 
 module.exports.uiContext = uiContext;

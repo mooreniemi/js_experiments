@@ -33,6 +33,14 @@ describe("let's prove a binary operator is commutative but not associative", fun
 			expect(function() {
 				jsc.assert(obeyAssociativity);
 			}).toThrow();
+
+			// alt bind syntax
+			expect(jsc.assert.bind(jsc, obeyAssociativity)).toThrow();
+
+			// example of Error format
+			// Error: Failed after 1 tests and 8 shrinks. 
+			// rngState: 0ba3bf754629c1d0e8; 
+			// Counterexample: []; 0; 1; .
 		});
 	});
 });

@@ -1,4 +1,4 @@
-$ = require('./node_modules/jquery/dist/jquery');
+$ = require('../node_modules/jquery/dist/jquery');
 
 var uiContext = {
     // types of user interaction that are hot: mouse click
@@ -21,7 +21,7 @@ var uiId = function() {
       // selector of a modeled object
       // would be abstracted to call like a #name method
         return $('#foo');
-    }
+    };
 };
 
 var Widget = function(name) {
@@ -33,7 +33,9 @@ Widget.prototype = new uiId();
 // bool
 var doButton = function(ui_context,id,text){
   this.context = ui_context,
-  this.init = function() { $(id).html('<button>'+ text + '</button>') },
+  this.init = function() { 
+    $(id).html('<button>'+ text + '</button>'); 
+  },
   this.text = text;
 
   // compares our id vs the active id
@@ -55,9 +57,9 @@ function update(ui_context, id, options) {
     // true if clicked, false otherwise
   if (doButton(ui_context, id, options.text)) {
     // then do the thing we wanted to do
-    
+
   }
-};
+}
 
 module.exports.uiContext = uiContext;
 module.exports.uiId = uiId;

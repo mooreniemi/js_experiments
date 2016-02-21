@@ -9,7 +9,7 @@ global.window = document.parentWindow;
 
 var boot = require('../boot.js'),
     // sut
-    imgGui = require('../imgui.js'),
+    imgGui = require('../src/imgui.js'),
     $ = require('../node_modules/jquery/dist/jquery');
 
 describe("some examples of imgui programming in javascript", function() {

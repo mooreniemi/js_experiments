@@ -1,6 +1,6 @@
 require('../boot.js');
 
-var MoP = require('../mop.js');
+var MoP = require('../src/mop.js');
 
 // http://blog.interfacevision.com/design/design-mop-and-javascript/
 
@@ -8,7 +8,7 @@ describe("some examples of message oriented programming in javascript", function
     describe("basic prototypal inheritances works via #message", function() {
         var functor = {
                 foo: function foo() {
-                    return "foo"
+                    return "foo";
                 }
             },
             firstMessageObject = MoP.message(functor),

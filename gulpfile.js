@@ -6,6 +6,11 @@ gulp.task('test', function() {
         .pipe(jasmine());
 });
 
+gulp.task('prop', function() {
+    return gulp.src('spec/propertiesTest.js')
+        .pipe(jasmine());
+});
+
 gulp.task('mop', function() {
     return gulp.src('spec/mopTest.js')
         .pipe(jasmine());

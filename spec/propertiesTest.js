@@ -16,14 +16,23 @@ describe("let's prove a binary operator is commutative but not associative", fun
 		});
 	});
 	describe("define the property", function() {
-		it("obeysCommutativity", function() {
-			// forall (f : bool -> bool) (b : bool), f (f (f b)) = f(b).
-			var obeysCommutativity =
+		it("obeyCommutativity", function() {
+			var obeyCommutativity =
 				jsc.forall("nat -> nat -> nat", "nat", "nat", function (f, a, b) {
-					return f(a, b) === f(b, a);
+					return prop.myBinOp(a, b) === prop.myBinOp(b, a);
 				});
 
-			jsc.assert(obeysCommutativity);
+			jsc.assert(obeyCommutativity);
+		});
+		it("does NOT obeyAssociativity", function() {
+			var obeyAssociativity =
+				jsc.forall("nat -> nat -> nat", "nat", "nat", function (f, a, b) {
+					return prop.myBinOp(prop.myBinOp(a, b), b) === prop.myBinOp(a, prop.myBinOp(b, a));
+				});
+
+			expect(function() {
+				jsc.assert(obeyAssociativity);
+			}).toThrow();
 		});
 	});
 });

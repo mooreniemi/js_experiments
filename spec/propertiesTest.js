@@ -64,6 +64,8 @@ describe("let's prove a binary operator is commutative but not associative", fun
 			expect(jsc.assert.bind(jsc, obeyAssociativity)).toThrow();
 		});
 	});
+
+	// https://www.npmjs.com/package/logic-gates
 	describe("what about NOR and NAND?", function() {
 		it("NOR does obeyCommutativity", function() {
 			var obeyCommutativity =

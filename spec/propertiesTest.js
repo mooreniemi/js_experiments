@@ -42,7 +42,7 @@ describe("let's prove a binary operator is commutative but not associative", fun
 			// Counterexample: []; 0; 1; .
 		});
 	});
-	describe("let's see another one", function() {
+	describe("let's see another one: myBinOp2", function() {
 		it("mulitiplies pairwise, then subtracts the sum of the pair", function() {
 			var x = 2, y = 3;
 			expect(prop.myBinOp2(x, y)).toBe(1);
@@ -58,7 +58,7 @@ describe("let's prove a binary operator is commutative but not associative", fun
 		it("does NOT obeyAssociativity", function() {
 			var obeyAssociativity =
 				jsc.forall("nat -> nat -> nat", "nat", "nat", function (f, a, b) {
-					return prop.myBinOp2(a, prop.myBinOp2(a, b)) == prop.myBinOp2(prop.myBin2(a, b), b);
+					return prop.myBinOp2(a, prop.myBinOp2(a, b)) == prop.myBinOp2(prop.myBinOp2(a, b), b);
 				});
 
 			expect(jsc.assert.bind(jsc, obeyAssociativity)).toThrow();

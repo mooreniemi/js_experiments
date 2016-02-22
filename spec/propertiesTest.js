@@ -38,9 +38,23 @@ describe("let's prove a binary operator is commutative but not associative", fun
 			expect(jsc.assert.bind(jsc, obeyAssociativity)).toThrow();
 
 			// example of Error format
-			// Error: Failed after 1 tests and 8 shrinks. 
-			// rngState: 0ba3bf754629c1d0e8; 
+			// Error: Failed after 1 tests and 8 shrinks.
+			// rngState: 0ba3bf754629c1d0e8;
 			// Counterexample: []; 0; 1; .
+		});
+	});
+	describe("let's see another one", function(){
+		it("mulitiplies pairwise, then subtracts the sum of the pair", function() {
+			var x = 2, y = 3;
+			expect(prop.myBinOp2(x, y)).toBe(1);
+		});
+		it("obeyCommutativity", function(){
+			var obeyCommutativity =
+				jsc.forall("nat -> nat -> nat", "nat", "nat", function (f, a, b) {
+					return prop.myBinOp2(a, b) === prop.myBinOp2(b, a);
+				});
+
+			jsc.assert(obeyCommutativity);
 		});
 	});
 });

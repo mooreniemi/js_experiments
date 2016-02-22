@@ -20,6 +20,7 @@
     "gulp-uglify": "^1.0.1",
     "jasmine-reporters": "^2.0.3",
     "jsverify": "^0.7.1",
+    "logic-gates": "0.0.1",
     "requirejs": "^2.1.15"
   },
   "devDependencies": {

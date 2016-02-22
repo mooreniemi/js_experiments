@@ -58,7 +58,26 @@ describe("let's prove a binary operator is commutative but not associative", fun
 		it("does NOT obeyAssociativity", function() {
 			var obeyAssociativity =
 				jsc.forall("nat -> nat -> nat", "nat", "nat", function (f, a, b) {
-					return prop.myBinOp2(a, prop.myBinOp2(a, b)) == prop.myBinOp2(prop.myBinOp2(a, b), b);
+					return prop.myBinOp2(a, prop.myBinOp2(a, b)) === prop.myBinOp2(prop.myBinOp2(a, b), b);
+				});
+
+			expect(jsc.assert.bind(jsc, obeyAssociativity)).toThrow();
+		});
+	});
+	describe("what about NOR and NAND?", function() {
+		it("NOR does obeyCommutativity", function() {
+			var obeyCommutativity =
+				jsc.forall("bool -> bool -> bool", "bool", "bool", function (f, a, b) {
+					return gates.nor(a, b) === gates.nor(b, a);
+				});
+
+			jsc.assert(obeyCommutativity);
+		});
+
+		it("NOR does NOT obeyAssociativity", function() {
+			var obeyAssociativity =
+				jsc.forall("bool -> bool -> bool", "bool", "bool", function (f, a, b) {
+					return gates.nor(a, gates.nor(a, b)) === gates.nor(gates.nor(a, b), b);
 				});
 
 			expect(jsc.assert.bind(jsc, obeyAssociativity)).toThrow();

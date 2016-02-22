@@ -1,10 +1,8 @@
 require('../boot.js');
 
+// http://jsverify.github.io/
 var prop = require('../src/properties.js'),
 		jsc = require('../node_modules/jsverify/lib/jsverify.js');
-
-// http://jsverify.github.io/
-// http://math.stackexchange.com/questions/160945/does-commutativity-imply-associativity
 
 describe("let's prove a binary operator is commutative but not associative", function() {
 	describe("define the operator myBinOp", function() {

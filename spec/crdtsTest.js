@@ -12,6 +12,9 @@ describe("CRDTs", function() {
       var one = new Z(zero).succ();
       expect(one.value).toEqual(1);
 
+      var two = new Z(one).succ();
+      expect(two.value).toEqual(2);
+
       var sum = one.add(1);
       expect(sum.value).toEqual(2);
     });

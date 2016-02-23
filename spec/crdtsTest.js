@@ -31,6 +31,8 @@ var CRDT = require('../src/crdts.js'),
       it("associativity", function() {
         var obeyAssociativity =
           jsc.forall("nat -> nat -> nat", "nat", "nat", function (f, a, b) {
+            // (a + a) + b == a + (a + b)
+            console.log("a: " + a + " b: " + b);
             return (new Z(a).add(new Z(a))).add(b) == new Z(a).add((new Z(a).add(b)));
           });
 

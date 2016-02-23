@@ -7,10 +7,13 @@ describe("CRDTs", function() {
   describe("integers (Z) are a group", function() {
     it("has zero, succ, add", function() {
       var zero = new Z().zero();
-      expect(zero).toEqual(0);
+      expect(zero.value).toEqual(0);
 
       var one = new Z(zero).succ();
-      expect(one).toEqual(1);
+      expect(one.value).toEqual(1);
+
+      var sum = one.add(1);
+      expect(sum.value).toEqual(2);
     });
   });
   // http://mathworld.wolfram.com/Group.html

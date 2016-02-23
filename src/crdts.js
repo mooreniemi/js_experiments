@@ -1,17 +1,24 @@
 var ops = {
+  value: function(value) {
+    if(value !== undefined && value.hasOwnProperty("value")) {
+      return value.value;
+    } else {
+      return value;
+    }
+  },
   zero: function() {
-    return 0;
+    return new Z(0);
   },
   succ: function () {
-    return this.value + 1;
+    return new Z(this.value + 1);
   },
   add: function(zz) {
-    return this.value + zz;
+    return new Z(this.value + zz);
   }
 };
 
 function Z(value) {
-  this.value = value;
+  this.value = ops.value(value);
   this.zero = ops.zero;
   this.succ = ops.succ;
   this.add = ops.add;

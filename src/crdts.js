@@ -13,7 +13,11 @@ var ops = {
     return new Z(this.value + 1);
   },
   add: function(zz) {
-    return new Z(this.value + zz);
+    if(zz !== undefined && zz.hasOwnProperty("value")) {
+      return new Z(this.value + zz.value);
+    } else {
+      return new Z(this.value + zz);
+    }
   }
 };
 

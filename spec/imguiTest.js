@@ -3,9 +3,15 @@
 // https://gist.github.com/jlongster/11192270
 // http://sol.gfxile.net/files/Assembly07_IMGUI.pdf
 
-var jsdom = require("jsdom").jsdom;
-global.document = jsdom("<button id='foo'>hello world</button><div id='bar'>bye now</div>");
-global.window = document.parentWindow;
+var jsdom = require("jsdom");
+window = jsdom.jsdom("<button id='foo'>hello world</button><div id='bar'>bye now</div>").createWindow();
+if(Object.keys(window).length === 0) {
+    // this hapens if contextify, one of jsdom's dependencies doesn't install correctly
+    // (it installs different code depending on the OS, so it cannot get checked in.);
+    throw "jsdom failed to create a usable environment, try uninstalling and reinstalling it";
+}
+global.window = window;
+global.document = window.document;
 
 var boot = require('../boot.js'),
     // sut

@@ -1,6 +1,6 @@
 {
   "name": "experiments",
-  "version": "0.0.0",
+  "version": "0.0.4",
   "description": "noodling around",
   "main": "boot.js",
   "dependencies": {
@@ -28,11 +28,11 @@
     "gulp-flowtype": "^0.4.9",
     "jasmine-fixture": "^1.2.1",
     "jasmine-jquery": "^2.0.5",
-    "jsdom": "^1.1.0"
+    "jsdom": "~8.0.4"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "alex moore - niemi",
   "license": "ISC"
 }

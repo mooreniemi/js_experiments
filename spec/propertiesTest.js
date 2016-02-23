@@ -17,7 +17,7 @@ describe("let's prove a binary operator is commutative but not associative", fun
 	describe("define the property", function() {
 		it("does obeyCommutativity", function() {
 			var obeyCommutativity =
-				jsc.forall("nat -> nat -> nat", "nat", "nat", function (f, a, b) {
+				jsc.forall("nat", "nat", function (a, b) {
 					return prop.myBinOp(a, b) === prop.myBinOp(b, a);
 				});
 
@@ -25,7 +25,7 @@ describe("let's prove a binary operator is commutative but not associative", fun
 		});
 		it("does NOT obeyAssociativity", function() {
 			var obeyAssociativity =
-				jsc.forall("nat -> nat -> nat", "nat", "nat", function (f, a, b) {
+				jsc.forall("nat", "nat", function (a, b) {
 					return prop.myBinOp(prop.myBinOp(a, b), b) === prop.myBinOp(a, prop.myBinOp(a, b));
 				});
 
@@ -49,7 +49,7 @@ describe("let's prove a binary operator is commutative but not associative", fun
 		});
 		it("does obeyCommutativity", function() {
 			var obeyCommutativity =
-				jsc.forall("nat -> nat -> nat", "nat", "nat", function (f, a, b) {
+				jsc.forall("nat", "nat", function (a, b) {
 					return prop.myBinOp2(a, b) === prop.myBinOp2(b, a);
 				});
 
@@ -57,7 +57,7 @@ describe("let's prove a binary operator is commutative but not associative", fun
 		});
 		it("does NOT obeyAssociativity", function() {
 			var obeyAssociativity =
-				jsc.forall("nat -> nat -> nat", "nat", "nat", function (f, a, b) {
+				jsc.forall("nat", "nat", function (a, b) {
 					return prop.myBinOp2(a, prop.myBinOp2(a, b)) === prop.myBinOp2(prop.myBinOp2(a, b), b);
 				});
 
@@ -69,7 +69,7 @@ describe("let's prove a binary operator is commutative but not associative", fun
 	describe("what about NOR and NAND?", function() {
 		it("NOR does obeyCommutativity", function() {
 			var obeyCommutativity =
-				jsc.forall("bool -> bool -> bool", "bool", "bool", function (f, a, b) {
+				jsc.forall("bool -> bool -> bool", "bool", "bool", function (a, b) {
 					return gates.nor(a, b) === gates.nor(b, a);
 				});
 
@@ -78,7 +78,7 @@ describe("let's prove a binary operator is commutative but not associative", fun
 
 		it("NOR does NOT obeyAssociativity", function() {
 			var obeyAssociativity =
-				jsc.forall("bool -> bool -> bool", "bool", "bool", function (f, a, b) {
+				jsc.forall("bool -> bool -> bool", "bool", "bool", function (a, b) {
 					return gates.nor(a, gates.nor(a, b)) === gates.nor(gates.nor(a, b), b);
 				});
 

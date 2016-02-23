@@ -4,7 +4,7 @@ var CRDT = require('../src/crdts.js'),
   Z = CRDT.Z;
 
 describe("CRDTs", function() {
-  describe("integers (Z) are a group", function() {
+  describe("integers with addition (Z) are a group", function() {
     it("has zero, succ, add", function() {
       var zero = new Z().zero();
       expect(zero.value).toEqual(0);

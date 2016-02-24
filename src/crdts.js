@@ -4,8 +4,7 @@ var ops = {
       return value.value;
     } else if(value == undefined) {
       return 0;
-    }
-    else {
+    } else {
       return value;
     }
   },

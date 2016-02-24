@@ -55,6 +55,13 @@ describe("CRDTs", function() {
       jsc.assert(obeyIdentity);
     });
     it("inversion (inverse property)", function() {
+      var obeyInversion =
+        jsc.forall("integer", function (a) {
+          var z = new Z(a),
+          antiZ = new Z(-a);
+          return z.add(antiZ).value === 0;
+        });
+      jsc.assert(obeyInversion);
     });
   });
 });

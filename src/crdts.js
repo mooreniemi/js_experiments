@@ -33,4 +33,10 @@ function Z(value) {
   this.add = ops.add;
 }
 
+function gSet(a, b) {
+  this.type = "GSet";
+  this.value = [a, b];
+}
+
 module.exports.Z = Z;
+module.exports.gSet = gSet;

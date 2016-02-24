@@ -6,7 +6,8 @@ require('../boot.js');
 
 var jsc = require('../node_modules/jsverify/lib/jsverify.js');
 var CRDT = require('../src/crdts.js'),
-    Z = CRDT.Z;
+    Z = CRDT.Z,
+    gSet = CRDT.gSet;
 
 describe("CRDTs", function() {
   describe("groups", function() {
@@ -71,7 +72,7 @@ describe("CRDTs", function() {
     // Let G be a group.
     var G = new Z();
     // A G-set is a pair (Y, f),
-    var gSet = [Y, f];
+    var gSet = new GSet(Y, f);
     // where Y is a set and
     var Y = new Set();
     // f : Y x G -> Y is a mapping
@@ -86,5 +87,8 @@ describe("CRDTs", function() {
     var obeyIdentity =
       jsc.forall("", function() {});
     // The mapping f defines the action of G on the set Y.
+  });
+  it("elements cant be removed from gSets", function(){
+
   });
 });

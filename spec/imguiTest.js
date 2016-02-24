@@ -4,7 +4,7 @@
 // http://sol.gfxile.net/files/Assembly07_IMGUI.pdf
 
 var jsdom = require("jsdom");
-window = jsdom.jsdom("<button id='foo'>hello world</button><div id='bar'>bye now</div>").createWindow();
+window = jsdom.jsdom("<button id='foo'>hello world</button><div id='bar'>bye now</div>").defaultView;
 if(Object.keys(window).length === 0) {
     // this hapens if contextify, one of jsdom's dependencies doesn't install correctly
     // (it installs different code depending on the OS, so it cannot get checked in.);

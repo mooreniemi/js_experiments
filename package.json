@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "gulp-flowtype": "^0.4.9",
+    "jasmine": "^2.4.1",
     "jasmine-fixture": "^1.2.1",
     "jasmine-jquery": "^2.0.5",
     "jsdom": "~8.0.4"

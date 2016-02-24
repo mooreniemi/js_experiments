@@ -11,7 +11,7 @@ var CRDT = require('../src/crdts.js'),
 describe("CRDTs", function() {
   describe("integers with addition (Z) are a group", function() {
     it("has zero, succ, add", function() {
-      var zero = new Z().zero();
+      var zero = new Z();
       expect(zero.value).toEqual(0);
 
       var one = new Z(zero).succ();
@@ -43,10 +43,16 @@ describe("CRDTs", function() {
 
           return left.value === right.value;
         });
-
       jsc.assert(obeyAssociativity);
     });
     it("identity", function() {
+      var obeyIdentity =
+        jsc.forall("integer", function (a) {
+          var z = new Z(a),
+          zero = new Z();
+          return z.add(zero).value === z.value;
+        });
+      jsc.assert(obeyIdentity);
     });
     it("inversion (inverse property)", function() {
     });

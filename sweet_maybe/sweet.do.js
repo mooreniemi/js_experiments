@@ -28,7 +28,9 @@ syntax @ = function (ctx) {
   let op2 = ctx.next().value;
   let init = ctx.expand('expr').value;
   if(op1.isPunctuator() && op2 && op2.isPunctuator()) {
-    return #`let ${ident} = ${init}`;
+    return #`var ${ident} = ${init}`;
+  } else if (op1.isPunctuator() && op2) {
+    return #`${ident} ${op1} ${op2}`;
   } else {
     return #`${ident}`;
   }
@@ -36,7 +38,7 @@ syntax @ = function (ctx) {
 
 function* addMaybes() {
   @a <- Maybe.of(7);
-  @b <- Maybe.of(@a + 9);
+  @b <- Maybe.of(@a.val + 9);
   return @b;
 }
 

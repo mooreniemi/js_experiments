@@ -10,8 +10,8 @@ function* noneExample_8() {
 result_2 = Do_1(noneExample_8, Maybe_0).val;
 console.log(result_2);
 function* addMaybes_16() {
-  let a_20 = Maybe_0.of(7);
-  let b_21 = Maybe_0.of(a_20);
+  var a_20 = Maybe_0.of(7);
+  var b_21 = Maybe_0.of(a_20.val);
   return b_21;
 }
 result_2 = Do_1(addMaybes_16, Maybe_0).val;

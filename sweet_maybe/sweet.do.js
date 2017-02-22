@@ -27,13 +27,9 @@ syntax @ = function (ctx) {
   let marker = ctx.mark();
   let op1 = ctx.next().value;
   let init = ctx.expand('expr').value;
-  let dummy = #`dummy`.get(0);
 
   if(op1 && op1.isPunctuator("<<=")) {
-    //result = result.concat(#`if(${c}(state,global))${dummy.fromKeyword('return')} (${r}(state, global));`);
-    let result = #``;
-    let foo = #`var ${ident} = ${dummy.fromKeyword('yield')} ${init}`;
-    return result.concat(foo);
+    return #`var ${ident} = yield (${init})`;
   } else {
     ctx.reset(marker);
     return #`${ident}`;

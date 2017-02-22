@@ -24,21 +24,25 @@ console.log(result);
 
 syntax @ = function (ctx) {
   let ident = ctx.next().value;
+  let marker = ctx.mark();
   let op1 = ctx.next().value;
-  let op2 = ctx.next().value;
   let init = ctx.expand('expr').value;
-  if(op1.isPunctuator() && op2 && op2.isPunctuator()) {
-    return #`var ${ident} = ${init}`;
-  } else if (op1.isPunctuator() && op2) {
-    return #`${ident} ${op1} ${op2}`;
+  let dummy = #`dummy`.get(0);
+
+  if(op1 && op1.isPunctuator("<<=")) {
+    //result = result.concat(#`if(${c}(state,global))${dummy.fromKeyword('return')} (${r}(state, global));`);
+    let result = #``;
+    let foo = #`var ${ident} = ${dummy.fromKeyword('yield')} ${init}`;
+    return result.concat(foo);
   } else {
+    ctx.reset(marker);
     return #`${ident}`;
   }
 }
 
 function* addMaybes() {
-  @a <- Maybe.of(7);
-  @b <- Maybe.of(@a.val + 9);
+  @a <<= Maybe.of(7);
+  @b <<= Maybe.of(@a + 9);
   return @b;
 }
 

@@ -1,0 +1,16 @@
+{
+  "name": "sweet_maybe",
+  "version": "1.0.0",
+  "description": "./node_modules/sweet.js/bin/sjs sweet.do.js > generated.js",
+  "main": "do.maybe.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "g": "./node_modules/sweet.js/bin/sjs sweet.do.js > generated.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fantasydo": "0.0.0",
+    "sweet.js": "^2.2.1"
+  }
+}
